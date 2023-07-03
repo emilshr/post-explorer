@@ -1,6 +1,8 @@
+import { SuspenseFallback } from "@/components/Suspense500";
 import { BASE_ROUTE } from "@/config/constants";
 import { ApiResponse } from "@/types/responseTypes";
 import Link from "next/link";
+import { Suspense } from "react";
 
 async function getHomeFeed() {
   try {
@@ -16,18 +18,20 @@ async function getHomeFeed() {
 export default async function HomePage() {
   const homeFeed = await getHomeFeed();
   return (
-    <div className="flex flex-col w-full">
-      {homeFeed.map(({ id, title }) => {
-        return (
-          <div key={id} className="flex w-full justify-center">
-            <Link href={`/post/${id}`}>
-              <div className="flex flex-col  cursor-pointer hover:underline text-xl text-center w-full items-center">
-                {title}
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+    <Suspense fallback={<SuspenseFallback />}>
+      <div className="flex flex-col w-full">
+        {homeFeed.map(({ id, title }) => {
+          return (
+            <div key={id} className="flex w-full justify-center">
+              <Link href={`/post/${id}`}>
+                <div className="flex flex-col  cursor-pointer hover:underline text-xl text-center w-full items-center">
+                  {title}
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </Suspense>
   );
 }
