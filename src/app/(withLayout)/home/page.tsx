@@ -24,6 +24,7 @@ async function getHomeFeed() {
 
 export default async function HomePage({ searchParams }: Props) {
   const homeFeed = await getHomeFeed();
+  throw new Error("Some error");
   return (
     <div className="flex flex-col w-full">
       {homeFeed.map(({ id, title }) => {
