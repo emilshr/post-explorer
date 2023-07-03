@@ -4,7 +4,8 @@ const nextConfig = {
     compress: true,
     swcMinify: true,
     experimental: {
-        forceSwcTransforms: true
+        forceSwcTransforms: true,
+        appDir: true
     }
 }
 
