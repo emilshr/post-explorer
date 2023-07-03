@@ -2,7 +2,6 @@ import Navigator from "./navigator";
 import { PropsWithChildren } from "react";
 
 export default function PostLayout({ children }: PropsWithChildren) {
-  console.log("Post layout");
   return (
     <div className="flex flex-col h-screen">
       <div
