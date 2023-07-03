@@ -2,15 +2,6 @@ import { BASE_ROUTE } from "@/config/constants";
 import { ApiResponse } from "@/types/responseTypes";
 import Link from "next/link";
 
-export interface HomePageSearchParams {
-  pageSize?: string;
-  pageNumber?: string;
-}
-
-interface Props {
-  searchParams: HomePageSearchParams;
-}
-
 async function getHomeFeed() {
   try {
     const response = await fetch(BASE_ROUTE, { method: "GET" });
@@ -22,9 +13,8 @@ async function getHomeFeed() {
   }
 }
 
-export default async function HomePage({ searchParams }: Props) {
+export default async function HomePage() {
   const homeFeed = await getHomeFeed();
-  throw new Error("Some error");
   return (
     <div className="flex flex-col w-full">
       {homeFeed.map(({ id, title }) => {
