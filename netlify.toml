@@ -1,6 +1,0 @@
-[[redirects]]
-    from = "/"
-    to = "https://projects.emilshr.com/hacker-news"
-    status = 200
-    force = true
-    headers = {X-From = "Netlify"}
